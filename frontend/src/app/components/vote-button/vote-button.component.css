@@ -1,0 +1,15 @@
+#vote{
+  margin: 5px;
+  width: auto;
+}
+button{
+  margin: 5px;
+  cursor: pointer;
+}
+i,p{
+  display: inline-block;
+}
+
+a{
+  cursor: pointer;
+}

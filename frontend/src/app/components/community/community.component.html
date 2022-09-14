@@ -1,0 +1,41 @@
+<div *ngIf="isComLoaded && isUserLoaded">
+  <div id="communityContent">
+    <h2>{{community.name}}</h2>
+    <p>{{community.description}}</p>
+
+    <div id="buttonsDiv">
+      <button class="btn-primary" *ngIf="currentUserExist && access()" (click)="open(content)">Edit community</button>
+
+      <button class="btn-primary" *ngIf="currentUserExist" (click)="newPost()">New Post</button>
+    </div>
+  </div>
+  <div class="container" *ngFor="let post of community.posts">
+    <app-post-in-community [community]="community" [currentUser]="current"
+                           [post]=post></app-post-in-community>
+  </div>
+
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit community</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div>
+      <label class="form-label" for="title">Title</label>
+      <input type="text" [(ngModel)]="updatedName" id="title" name="title" class="form-control form-control-lg"/>
+
+    </div>
+    <div class="form-outline form-white mb-4">
+      <label class="form-label" for="text">Text</label>
+      <textarea id="text" [(ngModel)]="updatedDescription" name="text" class="form-control form-control-lg"></textarea>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="editCommunity(); c('Save click')">Save</button>
+  </div>
+</ng-template>
+
+
+

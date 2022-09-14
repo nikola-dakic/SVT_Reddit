@@ -1,0 +1,10 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" id="reddit" href="#">Reddit</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    </div>
+    <button class="btn-primary" *ngIf=!currentUser (click)="login()">Log in</button>
+    <button class="btn-primary" *ngIf=currentUser (click)="logout()">Log out</button>
+    <button class="btn-primary" *ngIf=!currentUser (click)="signUp()">Sign up</button>
+  </div>
+</nav>

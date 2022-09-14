@@ -1,0 +1,46 @@
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white " id="loginForm" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p class="text-white mb-5">Please enter your username and password!</p>
+
+              <div class="form-outline form-dark mb-4">
+                <label class="form-label"  for="username">Username</label>
+                <input  #username="ngModel" id="username" [(ngModel)]="usernameValue" required class="form-control form-control-lg"/>
+
+                <small *ngIf=" username.touched && username.errors?.['required']" class="text-danger">
+                  You must fill in the field</small>
+              </div>
+
+              <div class="form-outline form-dark mb-4">
+                <label class="form-label" for="typePasswordX">Password</label>
+                <input type="password" #password="ngModel" [(ngModel)]="passwordValue" id="typePasswordX" required class="form-control form-control-lg"/>
+                <small *ngIf=" password.touched && password.errors?.['required']" class="text-danger">
+                  You must fill in the field</small>
+              </div>
+
+
+
+              <button class="btn btn-outline-primary px-5" (click)="login($event)" type="submit">Login</button>
+
+            </div>
+
+            <div>
+              <p class="mb-0">Don't have an account? <a href="/signUp" class="text-dark-50 fw-bold">Sign Up</a>
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-forbidden-modal [stringMessage]="'Bad credentials'" [instantClick]="true" *ngIf=isBadCredentials></app-forbidden-modal>
+

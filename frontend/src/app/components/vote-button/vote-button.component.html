@@ -1,0 +1,20 @@
+<div *ngIf="currentUserExist">
+  <div>
+    <a (click)="upvotePost(post)">
+      <ng-template
+        *ngIf="post.userVote == 'UPVOTE';then thenBlock else elseBlock">
+      </ng-template>
+      <ng-template #thenBlock><i class="bi bi-file-arrow-up-fill vote" style="color: green"></i></ng-template>
+      <ng-template #elseBlock><i class="bi bi-file-arrow-up-fill vote"></i></ng-template>
+    </a>
+    <p>{{post.carma}}</p>
+    <a (click)="downvotePost(post)">
+      <ng-template
+        *ngIf="post.userVote == 'DOWNVOTE';then thenBlock2 else elseBlock2">
+      </ng-template>
+      <ng-template #thenBlock2><i class="bi bi-file-arrow-down-fill vote"  style="color: green"></i></ng-template>
+      <ng-template #elseBlock2><i class="bi bi-file-arrow-down-fill vote"></i></ng-template>
+
+    </a>
+  </div>
+</div>

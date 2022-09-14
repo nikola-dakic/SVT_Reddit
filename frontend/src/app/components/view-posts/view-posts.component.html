@@ -1,0 +1,16 @@
+<div class="list-group">
+  <h6>Communities:</h6>
+  <a *ngFor="let community of allCom"
+     href="/community/{{community.id}}" >{{community.name}}<br>
+  </a>
+
+</div>
+
+  <div>
+    <button class="btn-primary" *ngIf=currentUser (click)="newCommunity()">New community</button>
+    <button class="btn-primary" *ngIf=currentUser (click)="myProfile()" >My profile</button>
+  </div>
+
+<div class="container" *ngFor="let post of allPosts">
+  <app-post [post]=post></app-post>
+</div>

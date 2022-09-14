@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.text}}</p>
+    <p class="card-text">Posted by: {{post.username}}</p>
+    <p *ngIf="!currentUserExist" class="card-text">Carma: {{post.carma}}</p>
+  </div>
+  <div>
+    <a (click)="redirectCommunity(post.communityId)" class="card-link">Community</a>
+    <app-vote-button [post]="post"></app-vote-button>
+
+  </div>
+</div>

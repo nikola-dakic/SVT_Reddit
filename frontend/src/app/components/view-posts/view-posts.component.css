@@ -1,0 +1,7 @@
+.list-group{
+  width: fit-content;
+  display: inline-block;
+}
+button{
+  margin: 5px;
+}

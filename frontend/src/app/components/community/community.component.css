@@ -1,0 +1,22 @@
+
+
+.container {
+  width: 100%;
+}
+
+
+
+h6 {
+  display: block;
+}
+
+i{
+  margin: 5px;
+}
+#buttonsDiv{
+  display: contents;
+  width: 400px;
+}
+button{
+  margin: 5px;
+}

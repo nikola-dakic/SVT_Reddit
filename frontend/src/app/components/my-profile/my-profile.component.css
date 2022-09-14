@@ -1,0 +1,33 @@
+
+table {
+  width: 100%;
+  vertical-align: middle;
+}
+#btnMyProfile{
+  display: flow-root;
+}
+
+td {
+  padding: 5px;
+  text-align: center;
+}
+
+th {
+  color: white;
+  text-align: center;
+}
+
+
+div {
+  display: grid;
+}
+
+a {
+  cursor: pointer;
+  font-style: italic;
+
+}
+button{
+  margin: 5px;
+}
+

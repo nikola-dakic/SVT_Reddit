@@ -1,0 +1,111 @@
+<div *ngIf=currentUserExist class="container py-5 h-100 ">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card  text-dark" id="signUpForm" style="border-radius: 1rem;">
+        <div class="card-body p-5 text-center">
+
+          <div class="mb-md-5 mt-md-4 pb-5">
+            <h3 class="fw-bold mb-2 text-uppercase">User</h3>
+            <table>
+              <tr>
+                <td>Username:</td>
+                <td><input type="text" disabled [(ngModel)]="usernameInput" id="username" required/></td>
+              </tr>
+              <tr>
+                <td>Email:</td>
+                <td><input type="text" disabled [(ngModel)]="emailInput" id="emailInfo" required/></td>
+              </tr>
+              <tr>
+                <td>Date registration:</td>
+                <td><input [(ngModel)]="dateRegistrationInput" disabled id="dateRegistration" required/>
+                </td>
+              </tr>
+              <tr>
+                <td>Carma:</td>
+                <td><input type="text" disabled [(ngModel)]="carmaInput" id="carma" required/></td>
+              </tr>
+              <tr>
+                <td>Display name:</td>
+                <td><input type="text" disabled [(ngModel)]="displayNameInput" id="displayName"/></td>
+              </tr>
+              <tr>
+                <td>Description:</td>
+                <td><textarea disabled [(ngModel)]="descriptionInput" id="description"></textarea></td>
+              </tr>
+            </table>
+            <div id="btnMyProfile">
+              <button class="btn-primary" id="editProfile" (click) = "openChangeUserInfo(changeInfo)">Edit</button>
+              <button class="btn-primary" id="changePassword"  (click)="openChangePassword(changePassword)">Change password</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #changeInfo let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" >Edit user</h4>
+      <button type="button" class="btn-close" aria-label="Close"  (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <div>
+        <label class="form-label" for="email">Email</label>
+        <input type="email" [(ngModel)]="updatedEmail" id="email" class="form-control form-control-lg"/>
+      </div>
+      <div>
+        <label class="form-label" for="displayName">Display name</label>
+        <input type="text" [(ngModel)]="updatedDisplayName" id="displayNameInput" name="title"
+               class="form-control form-control-lg"/>
+      </div>
+      <div class="form-outline form-white mb-4">
+        <label class="form-label" for="description">Description</label>
+        <textarea id="descriptionInput" [(ngModel)]="updatedDescription" name="text"
+                  class="form-control form-control-lg"></textarea>
+
+      </div>
+
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="editUser();c('Save click')">Save</button>
+    </div>
+  </ng-template>
+</div>
+  <ng-template #changePassword let-c="close" let-d="dismiss" novalidate>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Edit password</h4>
+      <button id ="closeBtnPass" type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <form (ngSubmit)="editPassword()" class="vh-100 gradient-custom" #signUpForm="ngForm" novalidate>
+      <div>
+        <label class="form-label">Currrent password</label>
+        <input type="password"  #current="ngModel" [(ngModel)]="currentPassword" required id="currentPassword" name="title" class="form-control form-control-lg"/>
+
+        <small *ngIf=" current.touched && ( current.invalid || current.errors?.['required'])" class="text-danger">
+          Wrong password value</small>
+      </div>
+      <div class="form-outline form-white mb-4">
+        <label class="form-label" >New password</label>
+        <input #newpass="ngModel"  required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$" type="password" [(ngModel)]="newPassword" id="newPassword" name="newPassword" class="form-control form-control-lg"/>
+        <small *ngIf=" newpass.touched && ( newpass.invalid || newpass.errors?.['required'])" class="text-danger">
+          Password should be at least 8 characters long and should contain one number,one character and one special character</small>
+
+      </div>
+      <div class="form-outline form-white mb-4">
+        <label class="form-label" >Confirm new password</label>
+        <input #newpassr="ngModel"  required pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$" type="password" [(ngModel)]="confirmNewPassword" id="ConfirmNewPassword" name="confirmNewPassword" class="form-control form-control-lg"/>
+        <small *ngIf=" newpassr.touched && ( newpassr.invalid || newpassr.errors?.['required'])" class="text-danger">
+          Password should be at least 8 characters long and should contain one number,one character and one special character</small>
+
+      </div>
+        <div class="modal-footer">
+          <button [disabled]="signUpForm.form.invalid"  type="submit" class="btn btn-outline-dark" (click)=" c('Save click')">Save</button>
+        </div>
+      </form>
+    </div>
+
+  </ng-template>
+<app-forbidden-modal [instantClick]="true" *ngIf=!currentUserExist></app-forbidden-modal>
+
+
